@@ -1,0 +1,750 @@
+# =============
+  SKIPCHECK;
+  FEEDSTRINGS;
+# =============
+
+
+# --------------------------------------------------------------------------------------------
+# Name Define versões calculadas
+# Desc A partir dessa regra só calcula para versões dinâmicas
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+[]=IF(ELISANC( 'ALL.D.Version', 'Dynamic Versions', !ALL.D.Version ) <> 0 
+  % !ALL.D.Version@='RE' 
+  ,CONTINUE
+  ,STET
+  ); 
+[]=IF(ELISANC( 'ALL.D.Version', 'Dynamic Versions', !ALL.D.Version ) <> 0 
+  &
+  DB( 'ALL.001.Actual_Control', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Flag' )@='ACTUAL',
+        ['ALL.D.Version':'ALL.D.Version':'RE'],
+        CONTINUE) ;
+
+# --------------------------------------------------------------------------------------------
+#
+#                      			INICIO DO BLOCO CALCULOS CONVERSÃO MOEDA
+#
+# --------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------
+# Name: Conversão de Moedas para mertica ajuste
+# Desc: Conversão de moedas para os padrões USD, BRL e EUR
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+
+###############################################################
+#-------------------------------------# USD CONV #-----------------------------------------
+###############################################################
+
+  ['ALL.D.Currency':'ALL.D.Currency':'USD Conv.' ,'DFS.M.120.Financial_Results':'DFS.M.120.Financial_Results':'Adjustments'] = N:
+
+  #USD  
+  ['ALL.D.Currency':'ALL.D.Currency':'USD']
+     +
+  # BRL PARA USD 
+  ['ALL.D.Currency':'ALL.D.Currency':'BRL'] \ DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX R$/US$', 'Value' )
+
++         
+  #   EUR PARA USD  
+ ['ALL.D.Currency':'ALL.D.Currency':'EUR'] * DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX US$/EUR', 'Value' )
+                                              
+      +
+  # ARS PARA USD 
+  ['ALL.D.Currency':'ALL.D.Currency':'ARS'] \  DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX ARS$/US$', 'Value' )  
+      +
+  # BOB  PARA USD 
+  ['ALL.D.Currency':'ALL.D.Currency':'BOB'] \  DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX BOB$/US$', 'Value' )  
+      +
+  # CAD  PARA USD 
+  ['ALL.D.Currency':'ALL.D.Currency':'CAD'] \  DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX CAD$/US$', 'Value' )  
+
+          +
+  # TRY  PARA USD 
+  ['ALL.D.Currency':'ALL.D.Currency':'TRY'] \  DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX TRY$/US$', 'Value' )  
+
+     +
+ # UYU PARA USD  
+  ['ALL.D.Currency':'ALL.D.Currency':'UYU'] \ DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX UYU$/US$', 'Value' )  
+    ;
+
+###############################################################
+#-------------------------------------# BRL CONV #-----------------------------------------
+###############################################################
+
+  ['ALL.D.Currency':'ALL.D.Currency':'BRL Conv.' ,'DFS.M.120.Financial_Results':'DFS.M.120.Financial_Results':'Adjustments'] = N:
+  #    #BRL  
+  ['ALL.D.Currency':'ALL.D.Currency':'BRL']
+     +
+  #  USD PARA BRL  
+  ['ALL.D.Currency':'ALL.D.Currency':'USD'] * DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX R$/US$', 'Value' )
+
++         
+  #   EUR PARA BRL  
+ ['ALL.D.Currency':'ALL.D.Currency':'EUR'] * DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX US$/EUR', 'Value' )
+                                              *DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX R$/US$', 'Value' )
+
+    
+    +
+  #  ARS PARA BRL  
+  ['ALL.D.Currency':'ALL.D.Currency':'ARS'] * 
+    (DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX R$/US$', 'Value' )   \
+     DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX ARS$/US$', 'Value' ) )
+    +
+  #  BOB PARA BRL  
+  ['ALL.D.Currency':'ALL.D.Currency':'BOB'] * 
+    (DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX R$/US$', 'Value' )   \
+     DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX BOB$/US$', 'Value' ) )
+        +
+  #  CAD PARA BRL  
+  ['ALL.D.Currency':'ALL.D.Currency':'CAD'] *
+      (DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX R$/US$', 'Value' )   \
+     DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX CAD$/US$', 'Value' ) )
+
+            +
+  #  TRY PARA BRL  
+  ['ALL.D.Currency':'ALL.D.Currency':'TRY'] *
+      (DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX R$/US$', 'Value' )   \
+     DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX TRY$/US$', 'Value' ) )
+
+      +
+    # UYU PARA BRL
+  ['ALL.D.Currency':'ALL.D.Currency':'UYU'] * 
+    
+    (DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX R$/US$', 'Value' )   \
+     DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX UYU$/US$', 'Value' ) )
+    ;
+
+
+
+
+
+
+###############################################################
+#-------------------------------------# EUR CONV #-----------------------------------------
+###############################################################
+
+  ['ALL.D.Currency':'ALL.D.Currency':'EUR Conv.','DFS.M.120.Financial_Results':'DFS.M.120.Financial_Results':'Adjustments'] = N:
+  #EUR     
+  ['ALL.D.Currency':'ALL.D.Currency':'EUR']
+     +
+   # USD PARA EUR  
+  ['ALL.D.Currency':'ALL.D.Currency':'USD'] \ DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX US$/EUR', 'Value' )
+       +
+    # BRL PARA EUR  
+ ( 
+   ( ['ALL.D.Currency':'ALL.D.Currency':'BRL']  \ DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX R$/US$', 'Value' ) )
+ \ DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX US$/EUR', 'Value' )
+ )
+
+       +
+    # ARS PARA EUR  
+ ( 
+   ( ['ALL.D.Currency':'ALL.D.Currency':'ARS']  \ DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX ARS$/US$', 'Value' ) )
+ \ DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX US$/EUR', 'Value' )
+ )
+
+           +
+    # BOB PARA EUR  
+ ( 
+   ( ['ALL.D.Currency':'ALL.D.Currency':'BOB']  \ DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX BOB$/US$', 'Value' ) )
+ \ DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX US$/EUR', 'Value' )
+ )
+
+               +
+    # CAD PARA EUR  
+ ( 
+   ( ['ALL.D.Currency':'ALL.D.Currency':'CAD']  \ DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX CAD$/US$', 'Value' ) )
+ \ DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX US$/EUR', 'Value' )
+ )
+               +
+    # TRY PARA EUR  
+ ( 
+   ( ['ALL.D.Currency':'ALL.D.Currency':'TRY']  \ DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX TRY$/US$', 'Value' ) )
+ \DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX US$/EUR', 'Value' )
+ )
+
+                   +
+    # UYU PARA EUR  
+ ( 
+   ( ['ALL.D.Currency':'ALL.D.Currency':'UYU']  \ DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX UYU$/US$', 'Value' ) )
+ \ DB( 'ALL.010.Economic_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'Average FX US$/EUR', 'Value' )
+ )
+    
+    ;
+
+
+
+
+
+# --------------------------------------------------------------------------------------------
+#
+#                      			INICIO DO BLOCO CALCULOS RESULTADOS FINACEIROS
+#
+# --------------------------------------------------------------------------------------------
+# --------------------------------------------------------------------------------------------
+# Name: Accrual of Interest (LC)
+# Desc: Accrual of Interest (LC)
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+['DFS.M.120.Financial_Results':'DFS.M.120.Financial_Results':'Value','DFS.D.Accounts_Fin_Results':'DFS.D.Accounts_Fin_Results':'Accrual of Interest (LC)']=N:
+    DB('STG.100.DataBase_Uploads', 
+     !ALL.D.Year, 
+     !ALL.D.Month,
+     !ALL.D.Version,
+     !ALL.D.Currency,
+     !ALL.D.Region,
+     'ALL.D.Products':'Total Products',
+     'Accrual of Interest (LC)',
+      'ALL.D.Account_Line':'Total Accounts Line', 
+     'Value'
+);
+# --------------------------------------------------------------------------------------------
+# Name: Accrual of Interest (LC)
+# Desc: Accrual of Interest (LC)
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+['DFS.M.120.Financial_Results':'DFS.M.120.Financial_Results':'Value','DFS.D.Accounts_Fin_Results':'DFS.D.Accounts_Fin_Results':'Interest Expenses']=N:
+    DB('STG.100.DataBase_Uploads', 
+     !ALL.D.Year, 
+     !ALL.D.Month,
+     !ALL.D.Version,
+     !ALL.D.Currency,
+     !ALL.D.Region,
+     'ALL.D.Products':'Total Products',
+     'Interest Expenses',
+      'ALL.D.Account_Line':'Total Accounts Line', 
+     'Value'
+);
+
+# --------------------------------------------------------------------------------------------
+# Name: Foreign Exchange Variation Over Cash
+# Desc: Foreign Exchange Variation Over Cash
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+['DFS.M.120.Financial_Results':'DFS.M.120.Financial_Results':'Value','DFS.D.Accounts_Fin_Results':'DFS.D.Accounts_Fin_Results':'Foreign Exchange Variation Over Cash']=N:
+    DB('STG.100.DataBase_Uploads', 
+     !ALL.D.Year, 
+     !ALL.D.Month,
+     !ALL.D.Version,
+     !ALL.D.Currency,
+     !ALL.D.Region,
+     'ALL.D.Products':'Total Products',
+     'Foreign Exchange Cash Flow Impact',
+      'ALL.D.Account_Line':'Total Accounts Line', 
+     'Value'
+);
+
+
+# --------------------------------------------------------------------------------------------
+# Name:Monetary Variation (LC)
+# Desc: Monetary Variation (LC)
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+['DFS.M.120.Financial_Results':'DFS.M.120.Financial_Results':'Value','DFS.D.Accounts_Fin_Results':'DFS.D.Accounts_Fin_Results':'Monetary Variation (LC)']=N:
+    DB('STG.100.DataBase_Uploads', 
+     !ALL.D.Year, 
+     !ALL.D.Month,
+     !ALL.D.Version,
+     !ALL.D.Currency,
+     !ALL.D.Region,
+     'ALL.D.Products':'Total Products',
+     'Monetary Variation (LC)',
+      'ALL.D.Account_Line':'Total Accounts Line', 
+     'Value'
+);
+
+
+# --------------------------------------------------------------------------------------------
+# Name:Foreign Exchange Variation (LC)
+# Desc: Foreign Exchange Variation (LC)
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+['DFS.D.Accounts_Fin_Results':'DFS.D.Accounts_Fin_Results':'Foreign Exchange Variation (LC)',
+ 'ALL.D.Currency':'ALL.D.Currency':{'BRL Conv.','EUR Conv.','USD Conv.'}
+]=N:
+DB( 'DFS.180.Gross_Debt', 
+    !ALL.D.Year,
+    !ALL.D.Month,
+    !ALL.D.Version,
+    !ALL.D.Currency,
+    !ALL.D.Region,
+    'DFS.D.Accounts_Debt':'Foreign Exchange Variation',
+    !DFS.M.120.Financial_Results
+  );
+
+# --------------------------------------------------------------------------------------------
+# Name:Hedge Accounting International investments
+# Desc: Hedge Accounting International investments'
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+['DFS.M.120.Financial_Results':'DFS.M.120.Financial_Results':'Value','DFS.D.Accounts_Fin_Results':'DFS.D.Accounts_Fin_Results':'Hedge Accounting International investments']=N:
+    DB('STG.100.DataBase_Uploads', 
+     !ALL.D.Year, 
+     !ALL.D.Month,
+     !ALL.D.Version,
+     !ALL.D.Currency,
+     !ALL.D.Region,
+     'ALL.D.Products':'Total Products',
+     'Hedge Accounting International Investments',
+      'ALL.D.Account_Line':'Total Accounts Line', 
+     'Value'
+);
+
+# --------------------------------------------------------------------------------------------
+# Name:Foreign Exchange Variation'
+# Desc: Foreign Exchange Variation'
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+['DFS.M.120.Financial_Results':'DFS.M.120.Financial_Results':'Value','DFS.D.Accounts_Fin_Results':'DFS.D.Accounts_Fin_Results':'Foreign Exchange Variation']=N:
+    DB('STG.100.DataBase_Uploads', 
+     !ALL.D.Year, 
+     !ALL.D.Month,
+     !ALL.D.Version,
+     !ALL.D.Currency,
+     !ALL.D.Region,
+     'ALL.D.Products':'Total Products',
+     'Foreign Exchange Variation',
+      'ALL.D.Account_Line':'Total Accounts Line', 
+     'Value'
+);
+
+
+# --------------------------------------------------------------------------------------------
+# Name:IOF - Cash
+# Desc:IOF - Cash
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+['DFS.M.120.Financial_Results':'DFS.M.120.Financial_Results':'Value','DFS.D.Accounts_Fin_Results':'DFS.D.Accounts_Fin_Results':'IOF - Cash']=N:
+    DB('STG.100.DataBase_Uploads', 
+     !ALL.D.Year, 
+     !ALL.D.Month,
+     !ALL.D.Version,
+     !ALL.D.Currency,
+     !ALL.D.Region,
+     'ALL.D.Products':'Total Products',
+     'IOF - Cash',
+      'ALL.D.Account_Line':'Total Accounts Line', 
+     'Value'
+);
+
+# --------------------------------------------------------------------------------------------
+# Name: CPMF - Cash
+# Desc: CPMF - Cash
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+['DFS.M.120.Financial_Results':'DFS.M.120.Financial_Results':'Value','DFS.D.Accounts_Fin_Results':'DFS.D.Accounts_Fin_Results':'CPMF - Cash']=N:
+    DB('STG.100.DataBase_Uploads', 
+     !ALL.D.Year, 
+     !ALL.D.Month,
+     !ALL.D.Version,
+     !ALL.D.Currency,
+     !ALL.D.Region,
+     'ALL.D.Products':'Total Products',
+     'CPMF - Cash',
+      'ALL.D.Account_Line':'Total Accounts Line', 
+     'Value'
+);
+
+
+# --------------------------------------------------------------------------------------------
+# Name: Other Taxes (Except Income Tax) - Cash
+# Desc: Other Taxes (Except Income Tax) - Cash
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+['DFS.M.120.Financial_Results':'DFS.M.120.Financial_Results':'Value','DFS.D.Accounts_Fin_Results':'DFS.D.Accounts_Fin_Results':'Other Taxes (Except Income Tax) - Cash']=N:
+    DB('STG.100.DataBase_Uploads', 
+     !ALL.D.Year, 
+     !ALL.D.Month,
+     !ALL.D.Version,
+     !ALL.D.Currency,
+     !ALL.D.Region,
+     'ALL.D.Products':'Total Products',
+     'Other Taxes (Except Income Tax) - Cash',
+      'ALL.D.Account_Line':'Total Accounts Line', 
+     'Value'
+);
+
+
+# --------------------------------------------------------------------------------------------
+# Name: Bank Expenses - Cash
+# Desc: Bank Expenses - Cash
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+['DFS.M.120.Financial_Results':'DFS.M.120.Financial_Results':'Value','DFS.D.Accounts_Fin_Results':'DFS.D.Accounts_Fin_Results':'Bank Expenses - Cash']=N:
+    DB('STG.100.DataBase_Uploads', 
+     !ALL.D.Year, 
+     !ALL.D.Month,
+     !ALL.D.Version,
+     !ALL.D.Currency,
+     !ALL.D.Region,
+     'ALL.D.Products':'Total Products',
+     'Bank Expenses - Cash',
+      'ALL.D.Account_Line':'Total Accounts Line', 
+     'Value'
+);
+
+# --------------------------------------------------------------------------------------------
+# Name:Other Financial Expenses- Cash
+# Desc: Other Financial Expenses- Cash
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+['DFS.M.120.Financial_Results':'DFS.M.120.Financial_Results':'Value','DFS.D.Accounts_Fin_Results':'DFS.D.Accounts_Fin_Results':'Other Financial Expenses- Cash']=N:
+    DB('STG.100.DataBase_Uploads', 
+     !ALL.D.Year, 
+     !ALL.D.Month,
+     !ALL.D.Version,
+     !ALL.D.Currency,
+     !ALL.D.Region,
+     'ALL.D.Products':'Total Products',
+     'Other Financial Expenses- Cash',
+      'ALL.D.Account_Line':'Total Accounts Line', 
+     'Value'
+);
+
+
+
+# --------------------------------------------------------------------------------------------
+# Name:Financial Expenses - Non Cash
+# Desc: Financial Expenses - Non Cash
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+['DFS.M.120.Financial_Results':'DFS.M.120.Financial_Results':'Value','DFS.D.Accounts_Fin_Results':'DFS.D.Accounts_Fin_Results':'Financial Expenses - Non Cash']=N:
+    DB('STG.100.DataBase_Uploads', 
+     !ALL.D.Year, 
+     !ALL.D.Month,
+     !ALL.D.Version,
+     !ALL.D.Currency,
+     !ALL.D.Region,
+     'ALL.D.Products':'Total Products',
+     'Financial Expenses - Non Cash',
+      'ALL.D.Account_Line':'Total Accounts Line', 
+     'Value'
+);
+# --------------------------------------------------------------------------------------------
+# Name:Financial Revenues
+# Desc: Financial Revenues
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+['DFS.D.Accounts_Fin_Results':'DFS.D.Accounts_Fin_Results':'Financial Revenues']=N:
+DB( 'DFS.140.Indirect_Cash_Flow',
+    !ALL.D.Year,
+    !ALL.D.Month,
+    !ALL.D.Version,
+    !ALL.D.Currency,
+    !ALL.D.Region,
+    'Financial Revenue',
+    !DFS.M.120.Financial_Results );
+
+
+# --------------------------------------------------------------------------------------------
+# Name:Other Financial Revenues
+# Desc: OOther Financial Revenues
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+['DFS.M.120.Financial_Results':'DFS.M.120.Financial_Results':'Value','DFS.D.Accounts_Fin_Results':'DFS.D.Accounts_Fin_Results':'Other Financial Revenues']=N:
+    DB('STG.100.DataBase_Uploads', 
+     !ALL.D.Year, 
+     !ALL.D.Month,
+     !ALL.D.Version,
+     !ALL.D.Currency,
+     !ALL.D.Region,
+     'ALL.D.Products':'Total Products',
+     'Other Financial Revenues',
+      'ALL.D.Account_Line':'Total Accounts Line', 
+     'Value'
+);
+
+
+# --------------------------------------------------------------------------------------------
+# Name:Financial Revenues Adjustments
+# Desc: Financial Revenues Adjustments
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+['DFS.M.120.Financial_Results':'DFS.M.120.Financial_Results':'Value','DFS.D.Accounts_Fin_Results':'DFS.D.Accounts_Fin_Results':'Financial Revenues Adjustment']=N:
+    DB('STG.100.DataBase_Uploads', 
+     !ALL.D.Year, 
+     !ALL.D.Month,
+     !ALL.D.Version,
+     !ALL.D.Currency,
+     !ALL.D.Region,
+     'ALL.D.Products':'Total Products',
+     'Financial Revenues Adjustments',
+      'ALL.D.Account_Line':'Total Accounts Line', 
+     'Value'
+);
+
+
+# --------------------------------------------------------------------------------------------
+# Name:Mutual Net Results
+# Desc: Mutual Net Results
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+['DFS.M.120.Financial_Results':'DFS.M.120.Financial_Results':'Value','DFS.D.Accounts_Fin_Results':'DFS.D.Accounts_Fin_Results':'Mutual Net Results']=N:
+    DB('STG.100.DataBase_Uploads', 
+     !ALL.D.Year, 
+     !ALL.D.Month,
+     !ALL.D.Version,
+     !ALL.D.Currency,
+     !ALL.D.Region,
+     'ALL.D.Products':'Total Products',
+     'Mutual Net Results',
+      'ALL.D.Account_Line':'Total Accounts Line', 
+     'Value'
+);
+
+
+
+# --------------------------------------------------------------------------------------------
+# Name:Balance Variation
+# Desc: Balance Variation
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+['DFS.M.120.Financial_Results':'DFS.M.120.Financial_Results':'Value','DFS.D.Accounts_Fin_Results':'DFS.D.Accounts_Fin_Results':'Balance Variation']=N:
+    DB('STG.100.DataBase_Uploads', 
+     !ALL.D.Year, 
+     !ALL.D.Month,
+     !ALL.D.Version,
+     !ALL.D.Currency,
+     !ALL.D.Region,
+     'ALL.D.Products':'Total Products',
+     'Balance Variation',
+      'ALL.D.Account_Line':'Total Accounts Line', 
+     'Value'
+);
+
+# --------------------------------------------------------------------------------------------
+# Name: Liquidation
+# Desc: Liquidation
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+['DFS.M.120.Financial_Results':'DFS.M.120.Financial_Results':'Value','DFS.D.Accounts_Fin_Results':'DFS.D.Accounts_Fin_Results':'Liquidation']=N:
+    DB('STG.100.DataBase_Uploads', 
+     !ALL.D.Year, 
+     !ALL.D.Month,
+     !ALL.D.Version,
+     !ALL.D.Currency,
+     !ALL.D.Region,
+     'ALL.D.Products':'Total Products',
+     'Liquidation',
+      'ALL.D.Account_Line':'Total Accounts Line', 
+     'Value'
+);
+
+# --------------------------------------------------------------------------------------------
+# Name: Hedge Accounting - Derivatives
+# Desc: Hedge Accounting - Derivatives
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+['DFS.M.120.Financial_Results':'DFS.M.120.Financial_Results':'Value','DFS.D.Accounts_Fin_Results':'DFS.D.Accounts_Fin_Results':'Hedge Accounting - Derivatives']=N:
+    DB('STG.100.DataBase_Uploads', 
+     !ALL.D.Year, 
+     !ALL.D.Month,
+     !ALL.D.Version,
+     !ALL.D.Currency,
+     !ALL.D.Region,
+     'ALL.D.Products':'Total Products',
+     'Hedge Accounting - Derivatives',
+      'ALL.D.Account_Line':'Total Accounts Line', 
+     'Value'
+);
+
+
+# --------------------------------------------------------------------------------------------
+# Name: Hedge Results
+# Desc: Hedge Results
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+['DFS.M.120.Financial_Results':'DFS.M.120.Financial_Results':'Value','DFS.D.Accounts_Fin_Results':'DFS.D.Accounts_Fin_Results':'Hedge Results' ]=N:
+    DB('STG.100.DataBase_Uploads', 
+     !ALL.D.Year, 
+     !ALL.D.Month,
+     !ALL.D.Version,
+     !ALL.D.Currency,
+     !ALL.D.Region,
+     'ALL.D.Products':'Total Products',
+     'Hedge Results',
+      'ALL.D.Account_Line':'Total Accounts Line', 
+     'Value'
+);
+
+
+# --------------------------------------------------------------------------------------------
+# Name: Other Financial Revenues - (Non Cash)
+# Desc:Other Financial Revenues - (Non Cash)
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+['DFS.M.120.Financial_Results':'DFS.M.120.Financial_Results':'Value','DFS.D.Accounts_Fin_Results':'DFS.D.Accounts_Fin_Results':'Other Financial Revenues - (Non Cash)' ]=N:
+    DB('STG.100.DataBase_Uploads', 
+     !ALL.D.Year, 
+     !ALL.D.Month,
+     !ALL.D.Version,
+     !ALL.D.Currency,
+     !ALL.D.Region,
+     'ALL.D.Products':'Total Products',
+     'Other Financial Results - (Non Cash Effect)',
+      'ALL.D.Account_Line':'Total Accounts Line', 
+     'Value'
+);
+
+# --------------------------------------------------------------------------------------------
+#
+#                      			INICIO DO BLOCO DE FEEDERS
+#
+# --------------------------------------------------------------------------------------------
+
+# =============
+  FEEDERS;
+# =============
+# =============
+# # --------------------------------------------------------------------------------------------
+# # Name: Feedes Forecast 
+# # Desc: Feedes Forecast 
+# # Date 01/2026
+# # Author: Miranda / Helder
+# # --------------------------------------------------------------------------------------------
+ ['ALL.D.Version':'ALL.D.Version':'RE'] => ['ALL.D.Version':'ALL.D.Version':'Dynamic Versions'];
+
+
+# --------------------------------------------------------------------------------------------
+# Name: Conversão de Moedas
+# Desc: Conversão de moedas para os padrões USD, BRL e EUR
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+[ 'DFS.M.120.Financial_Results':'DFS.M.120.Financial_Results':'Adjustments','ALL.D.Currency':'ALL.D.Currency':'Total Currency','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
+]=>
+DB( 'DFS.120.Financial_Results', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'BRL Conv.', !ALL.D.Region, !DFS.D.Accounts_Fin_Results, 'Adjustments' ),
+DB( 'DFS.120.Financial_Results', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'EUR Conv.', !ALL.D.Region, !DFS.D.Accounts_Fin_Results, 'Adjustments' ),
+DB( 'DFS.120.Financial_Results', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, 'USD Conv.', !ALL.D.Region, !DFS.D.Accounts_Fin_Results, 'Adjustments' )
+
+    
+    ;
+
+    
+# --------------------------------------------------------------------------------------------
+#                      			BLOCO DE FEEDERS EXTERNOS
+# --------------------------------------------------------------------------------------------
+
+###############################################################
+#-------------------------------------# DFS.100#-----------------------------------------
+###############################################################
+
+# --------------------------------------------------------------------------------------------
+# Name:Accrual of Interest (LC)
+# Desc: Accrual of Interest (LC)
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+ 
+[ 'DFS.D.Accounts_Fin_Results':'DFS.D.Accounts_Fin_Results':'Accrual of Interest (LC)'
+ ,'ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
+]=>DB( 'DFS.100.Profit_and_Loss', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, !ALL.D.Currency, !ALL.D.Region, 'PROD099', 'Interest Accrual', !DFS.M.120.Financial_Results );
+# --------------------------------------------------------------------------------------------
+# Name:Financial Expenses
+# Desc: Financial Expenses
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+ 
+[ 'DFS.D.Accounts_Fin_Results':'DFS.D.Accounts_Fin_Results':'Financial Expenses'
+ ,'ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
+]=>DB( 'DFS.100.Profit_and_Loss', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, !ALL.D.Currency, !ALL.D.Region, 'PROD099', 'Financial Expenses', !DFS.M.120.Financial_Results );
+
+# --------------------------------------------------------------------------------------------
+# Name:Total Financial Revenues
+# Desc: Total Financial Revenues
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+ 
+[ 'DFS.D.Accounts_Fin_Results':'DFS.D.Accounts_Fin_Results':'Total Financial Revenues'
+ ,'ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
+]=>DB( 'DFS.100.Profit_and_Loss', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, !ALL.D.Currency, !ALL.D.Region, 'PROD099', 'Financial Revenues', !DFS.M.120.Financial_Results);
+
+
+
+# --------------------------------------------------------------------------------------------
+# Name: Total Foreign Exchange Variation
+# Desc:  Total Foreign Exchange Variation
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+ 
+[ 'DFS.D.Accounts_Fin_Results':'DFS.D.Accounts_Fin_Results':'Total Foreign Exchange Variation'
+ ,'ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
+]=>DB( 'DFS.100.Profit_and_Loss', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, !ALL.D.Currency, !ALL.D.Region, 'PROD099', 'FX Variation', !DFS.M.120.Financial_Results );
+
+
+# --------------------------------------------------------------------------------------------
+# Name: Total Hedge Results
+# Desc:  Total Hedge Results
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+ 
+[ 'DFS.D.Accounts_Fin_Results':'DFS.D.Accounts_Fin_Results':'Total Hedge Results'
+ ,'ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
+]=>DB( 'DFS.100.Profit_and_Loss', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, !ALL.D.Currency, !ALL.D.Region, 'PROD099', 'Others', !DFS.M.120.Financial_Results );
+
+# --------------------------------------------------------------------------------------------
+# Name: Total Other Financial Revenues
+# Desc:  Total Other Financial Revenues
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+ 
+[ 'DFS.D.Accounts_Fin_Results':'DFS.D.Accounts_Fin_Results':'Total Other Financial Revenues'
+ ,'ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
+]=>DB( 'DFS.100.Profit_and_Loss', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, !ALL.D.Currency, !ALL.D.Region, 'PROD099', 'Others', !DFS.M.120.Financial_Results );
+
+
+###############################################################
+#-------------------------------------# DFS.140#-----------------------------------------
+###############################################################
+
+# --------------------------------------------------------------------------------------------
+# Name: Financial Expenses - Cash
+# Desc:   Financial Expenses - Cash
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+ 
+[ 'DFS.D.Accounts_Fin_Results':'DFS.D.Accounts_Fin_Results':'Financial Expenses - Cash'
+ ,'ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
+]=>DB( 'DFS.140.Indirect_Cash_Flow', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, !ALL.D.Currency, !ALL.D.Region, 'Other Financial Expenses', !DFS.M.120.Financial_Results );
+
+
+
+# --------------------------------------------------------------------------------------------
+# Name: Liquidation
+# Desc:   Liquidation
+# Date 01/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------
+ 
+[ 'DFS.D.Accounts_Fin_Results':'DFS.D.Accounts_Fin_Results':'Liquidation'
+ ,'ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
+]=>DB( 'DFS.140.Indirect_Cash_Flow', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, !ALL.D.Currency, !ALL.D.Region, 'Derivatives settlement', !DFS.M.120.Financial_Results );

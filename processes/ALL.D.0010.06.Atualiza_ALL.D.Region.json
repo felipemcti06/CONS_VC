@@ -1,0 +1,28 @@
+{
+	"@type":"Process",
+	"Name":"ALL.D.0010.06.Atualiza_ALL.D.Region",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"ALL.D.0010.06.Atualiza_ALL.D.Region.ti",
+	"DataSource":
+	{
+		"Type":"TM1DimensionSubset",
+		"dataSourceNameForServer":"MAP.D.Region",
+		"dataSourceNameForClient":"MAP.D.Region",
+		"subset":"All"
+	},
+	"Parameters":[],
+	"Variables":
+	[
+		{
+			"Name":"vElement",
+			"Type":"String",
+			"Position":1,
+			"StartByte":0,
+			"EndByte":0
+		}
+	],
+	"UID": "1769524701000168",
+	"VariablesUIData": [
+		"VarType=32\fColType=827\f"
+	]
+}
