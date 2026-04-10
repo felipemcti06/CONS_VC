@@ -242,7 +242,7 @@
 # Date 01/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------
-['STG.M.100.DataBaseUploads':'STG.M.100.DataBaseUploads':'Value' , 'ALL.D.Accounts':'ALL.D.Accounts':'Local Market Sales Volume [kt]' , 'ALL.D.Account_Line':'ALL.D.Account_Line':'N/A','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
+['STG.M.100.DataBaseUploads':'STG.M.100.DataBaseUploads':'Value' , 'ALL.D.Accounts':'ALL.D.Accounts':'REV.020.001' , 'ALL.D.Account_Line':'ALL.D.Account_Line':'N/A','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
 ]=> DB( 'REV.100.Revenue_Consolidated', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, !ALL.D.Currency, !ALL.D.Region, !ALL.D.Products, 'Domestic', 'Sales Volume [kt]' );
     
 ['STG.M.100.DataBaseUploads':'STG.M.100.DataBaseUploads':'Value' , 'ALL.D.Accounts':'ALL.D.Accounts':'Export Market Sales Volume [kt]' , 'ALL.D.Account_Line':'ALL.D.Account_Line':'N/A','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
