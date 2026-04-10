@@ -1,23 +1,5 @@
 #region Prolog
-#Region CallThisProcess
-# A snippet of code provided as an example how to call this process should the developer be working on a system without access to an editor with auto-complete.
-If( 1 = 0 );
-    ExecuteProcess( '}bedrock.cube.data.export', 'pLogoutput', pLogoutput,
-      'pStrictErrorHandling', pStrictErrorHandling,
-    	'pCube', '', 'pView', '', 'pFilter', '',
-    	'pFilterParallel', '', 'pParallelThreads', 0,
-    	'pDimDelim', '&', 'pEleStartDelim', '¦', 'pEleDelim', '+',
-    	'pSuppressZero', 1, 'pSuppressConsol', 1, 'pSuppressRules', 1, 'pSuppressConsolStrings', 1,
-    	'pZeroSource', 0, 'pCubeLogging', 0, 'pTemp', 1,
-    	'pFilePath', '', 'pFileName', '',
-    	'pDelim', ',','pDecimalSeparator','.','pThousandSeparator',',',
-      'pQuote', '"', 'pTitleRecord', 1, 'pSandbox', pSandbox, 'pSubN', pSubN
-	);
-EndIf;
-#EndRegion CallThisProcess
 
-#****Begin: Generated Statements***
-#****End: Generated Statements****
 
 #################################################################################################
 ##~~Join the bedrock TM1 community on GitHub https://github.com/cubewise-code/bedrock Ver 4.0~~##
@@ -474,7 +456,7 @@ Else;
   nParallelRun = 0;
 EndIf;
 
-### End Prolog ###
+
 #endregion
 #region Metadata
 
@@ -484,8 +466,7 @@ EndIf;
 #endregion
 #region Data
 
-#****Begin: Generated Statements***
-#****End: Generated Statements****
+
 
 #################################################################################################
 ##~~Join the bedrock TM1 community on GitHub https://github.com/cubewise-code/bedrock Ver 4.0~~##
@@ -536,8 +517,7 @@ TextOutput( cExportFile, Expand(sRow) );
 #endregion
 #region Epilog
 
-#****Begin: Generated Statements***
-#****End: Generated Statements****
+
 
 #################################################################################################
 ##~~Join the bedrock TM1 community on GitHub https://github.com/cubewise-code/bedrock Ver 4.0~~##
