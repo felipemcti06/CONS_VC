@@ -5,18 +5,18 @@ FEEDSTRINGS;
 
 
 # --------------------------------------------------------------------------------------------
-# INÍCIO DO BLOCO DE CÁLCULOS
+# INÃCIO DO BLOCO DE CÃLCULOS
 # Cubo: ALL.015.Region_Assumptions
-# Objetivo: Cálculo de percentuais e premissas regionais
+# Objetivo: CÃ¡lculo de percentuais e premissas regionais
 # --------------------------------------------------------------------------------------------
 
 
 # --------------------------------------------------------------------------------------------
-# % Minoritários
-# Fórmula:
+# % MinoritÃ¡rios
+# FÃ³rmula:
 # Minority Interests / Net Profit Before Minority Int.
 # --------------------------------------------------------------------------------------------
-['ALL.D.Region_Assumptions':'ALL.D.Region_Assumptions':'% Minoritários'] = C:
+['ALL.D.Region_Assumptions':'ALL.D.Region_Assumptions':'% MinoritÃ¡rios'] = C:
 
     DB(
         'DFS.100.Profit_and_Loss',
@@ -45,8 +45,8 @@ FEEDSTRINGS;
 
 # --------------------------------------------------------------------------------------------
 # % Participation
-# Fórmula:
-# EBITDA Econômico / EBITDA
+# FÃ³rmula:
+# EBITDA EconÃ´mico / EBITDA
 # --------------------------------------------------------------------------------------------
 ['ALL.D.Region_Assumptions':'ALL.D.Region_Assumptions':'% Participation'] = C:
 
@@ -58,7 +58,7 @@ FEEDSTRINGS;
         'ALL.D.Currency':'Total Currency',
         !ALL.D.Region,
         'ALL.D.Products':'Total Products',
-        'EBITDA Econômico',
+        'EBITDA EconÃ´mico',
         'Value'
     )
     \
@@ -77,8 +77,8 @@ FEEDSTRINGS;
 
 # --------------------------------------------------------------------------------------------
 # % Income Tax
-# Fórmula:
-# Income Tax / Base Tributável
+# FÃ³rmula:
+# Income Tax / Base TributÃ¡vel
 # --------------------------------------------------------------------------------------------
 ['ALL.D.Region_Assumptions':'ALL.D.Region_Assumptions':'% Income Tax'] = C:
 
@@ -159,7 +159,7 @@ FEEDSTRINGS;
             'ALL.D.Currency':'Total Currency',
             !ALL.D.Region,
             'ALL.D.Products':'Total Products',
-            'Additions/Low IT Income Statement',
+            'NOP.020.001',
             'Total Accounts Line',
             'Value'
         )
@@ -168,7 +168,7 @@ FEEDSTRINGS;
 
 # --------------------------------------------------------------------------------------------
 # % Rate Over Financial Investments
-# Fórmula:
+# FÃ³rmula:
 # Tax on Financial Revenue / Receita Financeira Total
 # --------------------------------------------------------------------------------------------
 ['ALL.D.Region_Assumptions':'ALL.D.Region_Assumptions':'% Rate Over Financial Investments'] = C:
@@ -206,7 +206,7 @@ FEEDSTRINGS;
             'ALL.D.Currency':'Total Currency',
             !ALL.D.Region,
             'ALL.D.Products':'Total Products',
-            'Additions/Low IT Income Statement',
+            'NOP.020.001',
             'Total Accounts Line',
             'Value'
         )
@@ -215,7 +215,7 @@ FEEDSTRINGS;
 
 # --------------------------------------------------------------------------------------------
 # % Caixa Invested
-# Fórmula:
+# FÃ³rmula:
 # Invested Cash / Initial Cash Balance
 # --------------------------------------------------------------------------------------------
 ['ALL.D.Region_Assumptions':'ALL.D.Region_Assumptions':'% Caixa Invested'] = C:
@@ -245,7 +245,7 @@ FEEDSTRINGS;
 
 # --------------------------------------------------------------------------------------------
 # % Cash Investment Return
-# Fórmula:
+# FÃ³rmula:
 # Financial Revenue / Invested Cash
 # --------------------------------------------------------------------------------------------
 ['ALL.D.Region_Assumptions':'ALL.D.Region_Assumptions':'% Cash Investment Return'] = C:
@@ -275,8 +275,8 @@ FEEDSTRINGS;
 
 # --------------------------------------------------------------------------------------------
 # % Income Tax Theoretical
-# Fórmula:
-# Income Tax Theoretical / Base Teórica
+# FÃ³rmula:
+# Income Tax Theoretical / Base TeÃ³rica
 # --------------------------------------------------------------------------------------------
 [
     'ALL.D.Region_Assumptions':'ALL.D.Region_Assumptions':'% Income Tax Theoretical',
@@ -334,7 +334,7 @@ FEEDSTRINGS;
             'ALL.D.Currency':'Total Currency',
             !ALL.D.Region,
             'ALL.D.Products':'Total Products',
-            'Additions/Low IT Income Statement',
+            'NOP.020.001',
             'N/A',
             'Value'
         )

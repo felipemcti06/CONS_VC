@@ -31,7 +31,7 @@
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------
 
-[ 'DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt': { 'Initial Gross Debt' , 'Initial Gross Debt Leasing' , 'Initial Gross Debt Total' }]=
+[ 'DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt': { 'Initial Gross Debt' , 'DEB.020.001' , 'Initial Gross Debt Total' }]=
     IF( DTYPE( 'ALL.D.Month', !ALL.D.Month )@='C', 
   DB( 'DFS.180.Gross_Debt', 
       !ALL.D.Year ,
@@ -46,8 +46,8 @@
 
 
 # --------------------------------------------------------------------------------------------
-# Name Define versões calculadas
-# Desc A partir dessa regra só calcula para versões dinâmicas
+# Name Define versÃµes calculadas
+# Desc A partir dessa regra sÃ³ calcula para versÃµes dinÃ¢micas
 # Date 01/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------
@@ -63,12 +63,12 @@
 
 # --------------------------------------------------------------------------------------------
 #
-#                      			INICIO DO BLOCO CALCULOS CONVERSÃO MOEDA SALDO INICIAL E SALDO FINAL
+#                      			INICIO DO BLOCO CALCULOS CONVERSÃƒO MOEDA SALDO INICIAL E SALDO FINAL
 #
 # --------------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------------
-# Name: Conversão de Moedas
-# Desc: Conversão de moedas para os padrões USD, BRL e EUR
+# Name: ConversÃ£o de Moedas
+# Desc: ConversÃ£o de moedas para os padrÃµes USD, BRL e EUR
 # Date 01/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------
@@ -79,7 +79,7 @@
 
 #-------------------------------------# VALOR INICIAL  #-----------------------------------------
   ['ALL.D.Currency':'ALL.D.Currency':'USD Conv.', 
-   'DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':{'Initial Gross Debt' , 'Initial Gross Debt Leasing' }
+   'DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':{'Initial Gross Debt' , 'DEB.020.001' }
   ] = N:
 
   #USD  
@@ -151,7 +151,7 @@
 
 
 #-------------------------------------# VALOR INICIAL  #-----------------------------------------
-  ['ALL.D.Currency':'ALL.D.Currency':'BRL Conv.' , 'DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':{ 'Initial Gross Debt'  , 'Initial Gross Debt Leasing' }] = N:
+  ['ALL.D.Currency':'ALL.D.Currency':'BRL Conv.' , 'DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':{ 'Initial Gross Debt'  , 'DEB.020.001' }] = N:
   #    #BRL  
   ['ALL.D.Currency':'ALL.D.Currency':'BRL']
      +
@@ -249,7 +249,7 @@
 
 
 #-------------------------------------# VALOR INICIAL  #-----------------------------------------
-  ['ALL.D.Currency':'ALL.D.Currency':'EUR Conv.' , 'DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt': { 'Initial Gross Debt' ,   'Initial Gross Debt Leasing' } ] = N:
+  ['ALL.D.Currency':'ALL.D.Currency':'EUR Conv.' , 'DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt': { 'Initial Gross Debt' ,   'DEB.020.001' } ] = N:
 #EUR     
   ['ALL.D.Currency':'ALL.D.Currency':'EUR']
      +
@@ -353,7 +353,7 @@
 
 # --------------------------------------------------------------------------------------------
 #
-#                      			INICIO DO BLOCO CALCULOS DÍVIDA
+#                      			INICIO DO BLOCO CALCULOS DÃVIDA
 #
 # --------------------------------------------------------------------------------------------
 
@@ -374,7 +374,7 @@
      !ALL.D.Currency,
      !ALL.D.Region,
      'ALL.D.Products':'Total Products',
-     'INITIAL GROSS DEBT (LC)',
+     'DEB.010.001',
       'ALL.D.Account_Line':'Total Accounts Line', 
      'Value'
 )
@@ -421,7 +421,7 @@
      !ALL.D.Currency,
      !ALL.D.Region,
      'ALL.D.Products':'Total Products',
-     'Funding (LC)',
+     'DEB.010.002',
       'ALL.D.Account_Line':'Total Accounts Line', 
      'Value'
 );
@@ -440,7 +440,7 @@
      !ALL.D.Currency,
      !ALL.D.Region,
      'ALL.D.Products':'Total Products',
-     'Accrual of Interest (LC)',
+     'FIN.010.001',
       'ALL.D.Account_Line':'Total Accounts Line', 
      'Value'
 );
@@ -459,7 +459,7 @@
      !ALL.D.Currency,
      !ALL.D.Region,
      'ALL.D.Products':'Total Products',
-     'Monetary Variation (LC)',
+     'FIN.020.002',
       'ALL.D.Account_Line':'Total Accounts Line', 
      'Value'
 );
@@ -479,7 +479,7 @@
      !ALL.D.Currency,
      !ALL.D.Region,
      'ALL.D.Products':'Total Products',
-     'Principal Amortization (LC)',
+     'DEB.010.005',
       'ALL.D.Account_Line':'Total Accounts Line', 
      'Value'
 );
@@ -499,7 +499,7 @@
      !ALL.D.Currency,
      !ALL.D.Region,
      'ALL.D.Products':'Total Products',
-     'Interest Amortization (LC)',
+     'DEB.010.006',
       'ALL.D.Account_Line':'Total Accounts Line', 
      'Value'
 );
@@ -519,7 +519,7 @@
      !ALL.D.Currency,
      !ALL.D.Region,
      'ALL.D.Products':'Total Products',
-     'Other Variation (LC)',
+     'DEB.010.007',
       'ALL.D.Account_Line':'Total Accounts Line', 
      'Value'
 );
@@ -540,7 +540,7 @@
      !ALL.D.Currency,
      !ALL.D.Region,
      'ALL.D.Products':'Total Products',
-     'Variation by buy/sale of company (LC)',
+     'DEB.010.008',
       'ALL.D.Account_Line':'Total Accounts Line', 
      'Value'
 );
@@ -571,7 +571,7 @@
   +
 ['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Variation by buy/sale of company'];
 #  +
-#['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Foreign Exchange Variation'];
+#['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'FIN.020.004'];
 
 # C:
 #     IF( DTYPE( 'ALL.D.Month', !ALL.D.Month )@='C', 
@@ -592,7 +592,7 @@
 # Date 01/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------
-[ 'DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Foreign Exchange Variation' ,
+[ 'DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'FIN.020.004' ,
  'ALL.D.Currency':'ALL.D.Currency':{'BRL Conv.','EUR Conv.','USD Conv.'}]=N:
 ['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Closing Balance Debt']
   -
@@ -616,7 +616,7 @@
 
 # --------------------------------------------------------------------------------------------
 #
-#                      			INICIO DO BLOCO CALCULOS DÍVIDA LEASING
+#                      			INICIO DO BLOCO CALCULOS DÃVIDA LEASING
 #
 # --------------------------------------------------------------------------------------------
 
@@ -626,7 +626,7 @@
 # Date 01/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------
-['DFS.M.180.Gross_Debt':'DFS.M.180.Gross_Debt':'Value' , 'DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Initial Gross Debt Leasing']=N:
+['DFS.M.180.Gross_Debt':'DFS.M.180.Gross_Debt':'Value' , 'DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.001']=N:
     DB('STG.100.DataBase_Uploads', 
      !ALL.D.Year, 
      !ALL.D.Month,
@@ -634,7 +634,7 @@
      !ALL.D.Currency,
      !ALL.D.Region,
      'ALL.D.Products':'Total Products',
-     'Initial Gross Debt Leasing',
+     'DEB.020.001',
       'ALL.D.Account_Line':'Total Accounts Line', 
      'Value'
 )
@@ -662,7 +662,7 @@
 # Date 01/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------
-['DFS.M.180.Gross_Debt':'DFS.M.180.Gross_Debt':'Value' , 'DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Funding Leasing']=N:
+['DFS.M.180.Gross_Debt':'DFS.M.180.Gross_Debt':'Value' , 'DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.002']=N:
     DB('STG.100.DataBase_Uploads', 
      !ALL.D.Year, 
      !ALL.D.Month,
@@ -670,7 +670,7 @@
      !ALL.D.Currency,
      !ALL.D.Region,
      'ALL.D.Products':'Total Products',
-     'Funding Leasing',
+     'DEB.020.002',
       'ALL.D.Account_Line':'Total Accounts Line', 
      'Value'
 );
@@ -681,7 +681,7 @@
 # Date 01/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------
-['DFS.M.180.Gross_Debt':'DFS.M.180.Gross_Debt':'Value' , 'DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Accrual of Interest Leasing']=N:
+['DFS.M.180.Gross_Debt':'DFS.M.180.Gross_Debt':'Value' , 'DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.003']=N:
     DB('STG.100.DataBase_Uploads', 
      !ALL.D.Year, 
      !ALL.D.Month,
@@ -689,7 +689,7 @@
      !ALL.D.Currency,
      !ALL.D.Region,
      'ALL.D.Products':'Total Products',
-     'Accrual of Interest Leasing',
+     'DEB.020.003',
       'ALL.D.Account_Line':'Total Accounts Line', 
      'Value'
 );
@@ -700,7 +700,7 @@
 # Date 01/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------
-['DFS.M.180.Gross_Debt':'DFS.M.180.Gross_Debt':'Value' , 'DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Monetary Variation Leasing']=N:
+['DFS.M.180.Gross_Debt':'DFS.M.180.Gross_Debt':'Value' , 'DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.004']=N:
     DB('STG.100.DataBase_Uploads', 
      !ALL.D.Year, 
      !ALL.D.Month,
@@ -708,7 +708,7 @@
      !ALL.D.Currency,
      !ALL.D.Region,
      'ALL.D.Products':'Total Products',
-     'Monetary Variation Leasing',
+     'DEB.020.004',
       'ALL.D.Account_Line':'Total Accounts Line', 
      'Value'
 );
@@ -720,7 +720,7 @@
 # Date 01/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------
-['DFS.M.180.Gross_Debt':'DFS.M.180.Gross_Debt':'Value' , 'DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Principal Amortization Leasing']=N:
+['DFS.M.180.Gross_Debt':'DFS.M.180.Gross_Debt':'Value' , 'DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.005']=N:
     DB('STG.100.DataBase_Uploads', 
      !ALL.D.Year, 
      !ALL.D.Month,
@@ -728,7 +728,7 @@
      !ALL.D.Currency,
      !ALL.D.Region,
      'ALL.D.Products':'Total Products',
-     'Principal Amortization Leasing',
+     'DEB.020.005',
       'ALL.D.Account_Line':'Total Accounts Line', 
      'Value'
 );
@@ -740,7 +740,7 @@
 # Date 01/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------
-['DFS.M.180.Gross_Debt':'DFS.M.180.Gross_Debt':'Value' , 'DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Interest Amortization Leasing']=N:
+['DFS.M.180.Gross_Debt':'DFS.M.180.Gross_Debt':'Value' , 'DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.006']=N:
     DB('STG.100.DataBase_Uploads', 
      !ALL.D.Year, 
      !ALL.D.Month,
@@ -748,7 +748,7 @@
      !ALL.D.Currency,
      !ALL.D.Region,
      'ALL.D.Products':'Total Products',
-     'Interest Amortization Leasing',
+     'DEB.020.006',
       'ALL.D.Account_Line':'Total Accounts Line', 
      'Value'
 );
@@ -760,7 +760,7 @@
 # Date 01/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------
-['DFS.M.180.Gross_Debt':'DFS.M.180.Gross_Debt':'Value' , 'DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Other Variation Leasing']=N:
+['DFS.M.180.Gross_Debt':'DFS.M.180.Gross_Debt':'Value' , 'DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.007']=N:
     DB('STG.100.DataBase_Uploads', 
      !ALL.D.Year, 
      !ALL.D.Month,
@@ -768,7 +768,7 @@
      !ALL.D.Currency,
      !ALL.D.Region,
      'ALL.D.Products':'Total Products',
-     'Other Variation Leasing',
+     'DEB.020.007',
       'ALL.D.Account_Line':'Total Accounts Line', 
      'Value'
 );
@@ -781,7 +781,7 @@
 # Date 01/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------
-['DFS.M.180.Gross_Debt':'DFS.M.180.Gross_Debt':'Value' , 'DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Variation by buy/sale of company Leasing']=N:
+['DFS.M.180.Gross_Debt':'DFS.M.180.Gross_Debt':'Value' , 'DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.008']=N:
     DB('STG.100.DataBase_Uploads', 
      !ALL.D.Year, 
      !ALL.D.Month,
@@ -789,7 +789,7 @@
      !ALL.D.Currency,
      !ALL.D.Region,
      'ALL.D.Products':'Total Products',
-     'Variation by buy/sale of company Leasing',
+     'DEB.020.008',
       'ALL.D.Account_Line':'Total Accounts Line', 
      'Value'
 );
@@ -804,23 +804,23 @@
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------
 [ 'DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Closing Balance Debt Leasing']=N:
-['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Initial Gross Debt Leasing']
+['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.001']
 +
-['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Funding Leasing']
+['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.002']
 +
-['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Accrual of Interest Leasing']
+['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.003']
   +
-['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Monetary Variation Leasing']
+['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.004']
   +
-['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Principal Amortization Leasing']
+['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.005']
   +
-['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Interest Amortization Leasing']
+['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.006']
   +
-['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Other Variation Leasing']
+['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.007']
   +
-['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Variation by buy/sale of company Leasing'];
+['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.008'];
 #  +
-#['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Foreign Exchange Variation'];
+#['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'FIN.020.004'];
 
 
 # --------------------------------------------------------------------------------------------
@@ -829,25 +829,25 @@
 # Date 01/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------
-[ 'DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Foreign Exchange Variation' ,
+[ 'DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'FIN.020.004' ,
  'ALL.D.Currency':'ALL.D.Currency':{'BRL Conv.','EUR Conv.','USD Conv.'}]=N:
 ['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Closing Balance Debt Leasing']
   -
-(['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Initial Gross Debt Leasing' ]
+(['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.001' ]
 +
-['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Funding Leasing']
+['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.002']
 +
-['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Accrual of Interest Leasing']
+['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.003']
   +
-['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Monetary Variation Leasing']
+['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.004']
   +
-['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Principal Amortization Leasing']
+['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.005']
   +
-['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Interest Amortization Leasing']
+['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.006']
   +
-['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Other Variation Leasing']
+['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.007']
   +
-['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Variation by buy/sale of company Leasing'])
+['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.008'])
 ;
 
 # --------------------------------------------------------------------------------------------
@@ -874,8 +874,8 @@
 
 
 # --------------------------------------------------------------------------------------------
-# Name: Conversão de Moedas
-# Desc: Conversão de moedas para os padrões USD, BRL e EUR
+# Name: ConversÃ£o de Moedas
+# Desc: ConversÃ£o de moedas para os padrÃµes USD, BRL e EUR
 # Date 01/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------
@@ -895,10 +895,10 @@
 # --------------------------------------------------------------------------------------------
 
 ['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Initial Gross Debt'  ,'ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
-]=>['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Foreign Exchange Variation'];
+]=>['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'FIN.020.004'];
 
 ['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Closing Balance Debt' ,'ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
-]=>['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Foreign Exchange Variation'];
+]=>['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'FIN.020.004'];
 
 
     
@@ -934,7 +934,7 @@
 ['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Variation by buy/sale of company','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
 ]=>['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Closing Balance Debt'];     
 
-['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Foreign Exchange Variation','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
+['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'FIN.020.004','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
 ]=>['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Closing Balance Debt'];         
     
 ['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Closing Balance Debt'
@@ -959,28 +959,28 @@
 # --------------------------------------------------------------------------------------------
 
 
-['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Initial Gross Debt Leasing','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
+['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.001','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
 ]=>['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Closing Balance Debt Leasing'];
 
-['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Funding Leasing','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
+['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.002','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
 ]=>['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Closing Balance Debt Leasing'];
 
-['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Accrual of Interest Leasing','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
+['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.003','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
 ]=>['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Closing Balance Debt Leasing'];
 
-['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Monetary Variation Leasing','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
+['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.004','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
 ]=>['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Closing Balance Debt Leasing'];
 
-['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Principal Amortization Leasing','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
+['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.005','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
 ]=>['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Closing Balance Debt Leasing'];
 
-['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Interest Amortization Leasing','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
+['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.006','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
 ]=>['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Closing Balance Debt Leasing'];
 
-['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Other Variation Leasing','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
+['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.007','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
 ]=>['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Closing Balance Debt Leasing'];        
 
-['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Variation by buy/sale of company Leasing','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
+['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'DEB.020.008','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
 ]=>['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Closing Balance Debt Leasing'];
 
 
@@ -994,7 +994,7 @@
       !ALL.D.Version,
       !ALL.D.Currency,
       !ALL.D.Region,
-      'Initial Gross Debt Leasing',
+      'DEB.020.001',
       !DFS.M.180.Gross_Debt
     );
 
@@ -1018,7 +1018,7 @@
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------    
 
-['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'Foreign Exchange Variation'
+['DFS.D.Accounts_Debt':'DFS.D.Accounts_Debt':'FIN.020.004'
  ,'ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
 , 'ALL.D.Currency':'ALL.D.Currency':{'BRL Conv.','EUR Conv.','USD Conv.'}
   

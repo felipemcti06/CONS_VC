@@ -10,8 +10,8 @@
 #
 # --------------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------------
-# Name Define versões calculadas
-# Desc A partir dessa regra só calcula para versões dinâmicas
+# Name Define versÃµes calculadas
+# Desc A partir dessa regra sÃ³ calcula para versÃµes dinÃ¢micas
 # Date 01/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------
@@ -455,7 +455,7 @@
 # Date 02/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------
-['DFS.D.KPI':'DFS.D.KPI':{'IFRS16','Depreciação LTM','Income Tax LTM','Equity LTM'
+['DFS.D.KPI':'DFS.D.KPI':{'IFRS16','DepreciaÃ§Ã£o LTM','Income Tax LTM','Equity LTM'
     ,'(+) Gross Fixed Assets','(-) Accumulated Depreciation','(+) Adjustment Hyperinflation','(+) Inflation adjustment','(+) Right of Use','(+) Investments','(+) Goodwill','(+) Intangible','% ROIC'},
  'ALL.D.Month':'ALL.D.Month':{'Total Months','1st Quarter','2nd Quarter','3rd Quarter','4th Quarter','1st Semester','2nd Semester'
 ,'YTD 01','YTD 02','YTD 03','YTD 04','YTD 05','YTD 06','YTD 07','YTD 08','YTD 09','YTD 10','YTD 11','YTD 12'},'DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'
@@ -643,7 +643,7 @@ DB('DFS.200.KPIs', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, !ALL.D.Currency, !
 # Date 02/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------
-['DFS.D.KPI':'DFS.D.KPI':'Depreciação LTM','ALL.D.Month':'ALL.D.Month':'01','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value']= N:
+['DFS.D.KPI':'DFS.D.KPI':'DepreciaÃ§Ã£o LTM','ALL.D.Month':'ALL.D.Month':'01','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value']= N:
     DB('DFS.100.Profit_and_Loss', 
                !ALL.D.Year, 
                !ALL.D.Month, 
@@ -659,7 +659,7 @@ DB('DFS.200.KPIs', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, !ALL.D.Currency, !
 # Date 02/2026
 # Author: Miranda / HelderDFS.100.Profit_and_Loss
 # --------------------------------------------------------------------------------------------
-['DFS.D.KPI':'DFS.D.KPI':'Depreciação LTM','ALL.D.Month':'ALL.D.Month':{'02','03','04','05','06','07','08','09','10','11','12'},'DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value']= N:
+['DFS.D.KPI':'DFS.D.KPI':'DepreciaÃ§Ã£o LTM','ALL.D.Month':'ALL.D.Month':{'02','03','04','05','06','07','08','09','10','11','12'},'DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value']= N:
   #   DB('DFS.100.Profit_and_Loss', 
   #              !ALL.D.Year, 
   #              !ALL.D.Month, 
@@ -758,7 +758,7 @@ DB('DFS.200.KPIs', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, !ALL.D.Currency, !
      !ALL.D.Currency,
      !ALL.D.Region,
      !ALL.D.Products,
-     'Additions/Low IT Income Statement',
+     'NOP.020.001',
       'N/A', 
      'Value'))
     
@@ -1114,7 +1114,7 @@ DB('DFS.200.KPIs', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, !ALL.D.Currency, !
            !ALL.D.Currency, 
            !ALL.D.Region, 
            !ALL.D.Products, 
-           'Fixed Costs',
+           'CST.020.001',
            'Value')
   +
       DB('DFS.100.Profit_and_Loss', 
@@ -1225,7 +1225,7 @@ DB('DFS.200.KPIs', !ALL.D.Year, '02', !ALL.D.Version, !ALL.D.Currency, !ALL.D.Re
 # Date 02/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------
-['DFS.D.KPI':'DFS.D.KPI':'Personnel Expenses','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
+['DFS.D.KPI':'DFS.D.KPI':'OBZ.010.001','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
   DB('STG.100.DataBase_Uploads', 
              !ALL.D.Year, 
              !ALL.D.Month, 
@@ -1233,7 +1233,7 @@ DB('DFS.200.KPIs', !ALL.D.Year, '02', !ALL.D.Version, !ALL.D.Currency, !ALL.D.Re
              !ALL.D.Currency, 
              !ALL.D.Region, 
              !ALL.D.Products, 
-            'Personnel Expenses', 
+            'OBZ.010.001', 
              'N/A', 
             'Value');
 # --------------------------------------------------------------------------------------------
@@ -1242,7 +1242,7 @@ DB('DFS.200.KPIs', !ALL.D.Year, '02', !ALL.D.Version, !ALL.D.Currency, !ALL.D.Re
 # Date 02/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------
-['DFS.D.KPI':'DFS.D.KPI':'Maintenance','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
+['DFS.D.KPI':'DFS.D.KPI':'OBZ.010.002','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
   DB('STG.100.DataBase_Uploads', 
              !ALL.D.Year, 
              !ALL.D.Month, 
@@ -1250,24 +1250,7 @@ DB('DFS.200.KPIs', !ALL.D.Year, '02', !ALL.D.Version, !ALL.D.Currency, !ALL.D.Re
              !ALL.D.Currency, 
              !ALL.D.Region, 
              !ALL.D.Products, 
-            'Maintenance', 
-             'N/A', 
-            'Value');
-# --------------------------------------------------------------------------------------------
-# Name 
-# Desc 
-# Date 02/2026
-# Author: Miranda / Helder
-# --------------------------------------------------------------------------------------------  
-['DFS.D.KPI':'DFS.D.KPI':'Facilities','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
-  DB('STG.100.DataBase_Uploads', 
-             !ALL.D.Year, 
-             !ALL.D.Month, 
-             !ALL.D.Version, 
-             !ALL.D.Currency, 
-             !ALL.D.Region, 
-             !ALL.D.Products, 
-            'Facilities', 
+            'OBZ.010.002', 
              'N/A', 
             'Value');
 # --------------------------------------------------------------------------------------------
@@ -1276,7 +1259,7 @@ DB('DFS.200.KPIs', !ALL.D.Year, '02', !ALL.D.Version, !ALL.D.Currency, !ALL.D.Re
 # Date 02/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------  
-['DFS.D.KPI':'DFS.D.KPI':'Professionais Services','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
+['DFS.D.KPI':'DFS.D.KPI':'OBZ.010.003','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
   DB('STG.100.DataBase_Uploads', 
              !ALL.D.Year, 
              !ALL.D.Month, 
@@ -1284,7 +1267,7 @@ DB('DFS.200.KPIs', !ALL.D.Year, '02', !ALL.D.Version, !ALL.D.Currency, !ALL.D.Re
              !ALL.D.Currency, 
              !ALL.D.Region, 
              !ALL.D.Products, 
-            'Professionais Services', 
+            'OBZ.010.003', 
              'N/A', 
             'Value');
 # --------------------------------------------------------------------------------------------
@@ -1293,7 +1276,7 @@ DB('DFS.200.KPIs', !ALL.D.Year, '02', !ALL.D.Version, !ALL.D.Currency, !ALL.D.Re
 # Date 02/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------  
-['DFS.D.KPI':'DFS.D.KPI':'Legal','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
+['DFS.D.KPI':'DFS.D.KPI':'OBZ.010.004','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
   DB('STG.100.DataBase_Uploads', 
              !ALL.D.Year, 
              !ALL.D.Month, 
@@ -1301,7 +1284,24 @@ DB('DFS.200.KPIs', !ALL.D.Year, '02', !ALL.D.Version, !ALL.D.Currency, !ALL.D.Re
              !ALL.D.Currency, 
              !ALL.D.Region, 
              !ALL.D.Products, 
-            'Legal', 
+            'OBZ.010.004', 
+             'N/A', 
+            'Value');
+# --------------------------------------------------------------------------------------------
+# Name 
+# Desc 
+# Date 02/2026
+# Author: Miranda / Helder
+# --------------------------------------------------------------------------------------------  
+['DFS.D.KPI':'DFS.D.KPI':'OBZ.010.005','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
+  DB('STG.100.DataBase_Uploads', 
+             !ALL.D.Year, 
+             !ALL.D.Month, 
+             !ALL.D.Version, 
+             !ALL.D.Currency, 
+             !ALL.D.Region, 
+             !ALL.D.Products, 
+            'OBZ.010.005', 
              'N/A', 
             'Value');  
 # --------------------------------------------------------------------------------------------
@@ -1310,7 +1310,7 @@ DB('DFS.200.KPIs', !ALL.D.Year, '02', !ALL.D.Version, !ALL.D.Currency, !ALL.D.Re
 # Date 02/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------  
-['DFS.D.KPI':'DFS.D.KPI':'IT','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
+['DFS.D.KPI':'DFS.D.KPI':'OBZ.010.006','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
   DB('STG.100.DataBase_Uploads', 
              !ALL.D.Year, 
              !ALL.D.Month, 
@@ -1318,7 +1318,7 @@ DB('DFS.200.KPIs', !ALL.D.Year, '02', !ALL.D.Version, !ALL.D.Currency, !ALL.D.Re
              !ALL.D.Currency, 
              !ALL.D.Region, 
              !ALL.D.Products, 
-            'IT', 
+            'OBZ.010.006', 
              'N/A', 
             'Value');
 # --------------------------------------------------------------------------------------------
@@ -1327,7 +1327,7 @@ DB('DFS.200.KPIs', !ALL.D.Year, '02', !ALL.D.Version, !ALL.D.Currency, !ALL.D.Re
 # Date 02/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------  
-['DFS.D.KPI':'DFS.D.KPI':'Operating Materiais','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
+['DFS.D.KPI':'DFS.D.KPI':'OBZ.010.007','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
   DB('STG.100.DataBase_Uploads', 
              !ALL.D.Year, 
              !ALL.D.Month, 
@@ -1335,7 +1335,7 @@ DB('DFS.200.KPIs', !ALL.D.Year, '02', !ALL.D.Version, !ALL.D.Currency, !ALL.D.Re
              !ALL.D.Currency, 
              !ALL.D.Region, 
              !ALL.D.Products, 
-            'Operating Materiais', 
+            'OBZ.010.007', 
              'N/A', 
             'Value');  
 # --------------------------------------------------------------------------------------------
@@ -1344,7 +1344,7 @@ DB('DFS.200.KPIs', !ALL.D.Year, '02', !ALL.D.Version, !ALL.D.Currency, !ALL.D.Re
 # Date 02/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------  
-['DFS.D.KPI':'DFS.D.KPI':'Shared Services center','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
+['DFS.D.KPI':'DFS.D.KPI':'OBZ.010.008','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
   DB('STG.100.DataBase_Uploads', 
              !ALL.D.Year, 
              !ALL.D.Month, 
@@ -1352,7 +1352,7 @@ DB('DFS.200.KPIs', !ALL.D.Year, '02', !ALL.D.Version, !ALL.D.Currency, !ALL.D.Re
              !ALL.D.Currency, 
              !ALL.D.Region, 
              !ALL.D.Products, 
-            'Shared Services center', 
+            'OBZ.010.008', 
              'N/A', 
             'Value');
 # --------------------------------------------------------------------------------------------
@@ -1361,7 +1361,7 @@ DB('DFS.200.KPIs', !ALL.D.Year, '02', !ALL.D.Version, !ALL.D.Currency, !ALL.D.Re
 # Date 02/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------  
-['DFS.D.KPI':'DFS.D.KPI':'Institucional','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
+['DFS.D.KPI':'DFS.D.KPI':'OBZ.010.009','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
   DB('STG.100.DataBase_Uploads', 
              !ALL.D.Year, 
              !ALL.D.Month, 
@@ -1369,7 +1369,7 @@ DB('DFS.200.KPIs', !ALL.D.Year, '02', !ALL.D.Version, !ALL.D.Currency, !ALL.D.Re
              !ALL.D.Currency, 
              !ALL.D.Region, 
              !ALL.D.Products, 
-            'Institucional', 
+            'OBZ.010.009', 
              'N/A', 
             'Value');  
  # --------------------------------------------------------------------------------------------
@@ -1378,7 +1378,7 @@ DB('DFS.200.KPIs', !ALL.D.Year, '02', !ALL.D.Version, !ALL.D.Currency, !ALL.D.Re
 # Date 02/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------  
-['DFS.D.KPI':'DFS.D.KPI':'Marketing','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
+['DFS.D.KPI':'DFS.D.KPI':'OBZ.010.010','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
   DB('STG.100.DataBase_Uploads', 
              !ALL.D.Year, 
              !ALL.D.Month, 
@@ -1386,7 +1386,7 @@ DB('DFS.200.KPIs', !ALL.D.Year, '02', !ALL.D.Version, !ALL.D.Currency, !ALL.D.Re
              !ALL.D.Currency, 
              !ALL.D.Region, 
              !ALL.D.Products, 
-            'Marketing', 
+            'OBZ.010.010', 
              'N/A', 
             'Value');   
  # --------------------------------------------------------------------------------------------
@@ -1395,7 +1395,7 @@ DB('DFS.200.KPIs', !ALL.D.Year, '02', !ALL.D.Version, !ALL.D.Currency, !ALL.D.Re
 # Date 02/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------  
-['DFS.D.KPI':'DFS.D.KPI':'Operating Vehicles','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
+['DFS.D.KPI':'DFS.D.KPI':'OBZ.010.011','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
   DB('STG.100.DataBase_Uploads', 
              !ALL.D.Year, 
              !ALL.D.Month, 
@@ -1403,7 +1403,7 @@ DB('DFS.200.KPIs', !ALL.D.Year, '02', !ALL.D.Version, !ALL.D.Currency, !ALL.D.Re
              !ALL.D.Currency, 
              !ALL.D.Region, 
              !ALL.D.Products, 
-            'Operating Vehicles', 
+            'OBZ.010.011', 
              'N/A', 
             'Value');     
  # --------------------------------------------------------------------------------------------
@@ -1412,7 +1412,7 @@ DB('DFS.200.KPIs', !ALL.D.Year, '02', !ALL.D.Version, !ALL.D.Currency, !ALL.D.Re
 # Date 02/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------  
-['DFS.D.KPI':'DFS.D.KPI':'Travel and refunds','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
+['DFS.D.KPI':'DFS.D.KPI':'OBZ.010.012','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
   DB('STG.100.DataBase_Uploads', 
              !ALL.D.Year, 
              !ALL.D.Month, 
@@ -1420,7 +1420,7 @@ DB('DFS.200.KPIs', !ALL.D.Year, '02', !ALL.D.Version, !ALL.D.Currency, !ALL.D.Re
              !ALL.D.Currency, 
              !ALL.D.Region, 
              !ALL.D.Products, 
-            'Travel and refunds', 
+            'OBZ.010.012', 
              'N/A', 
             'Value');
 
@@ -1431,7 +1431,7 @@ DB('DFS.200.KPIs', !ALL.D.Year, '02', !ALL.D.Version, !ALL.D.Currency, !ALL.D.Re
 # Date 02/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------  
-['DFS.D.KPI':'DFS.D.KPI':'Receita adjacências','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
+['DFS.D.KPI':'DFS.D.KPI':'Receita adjacÃªncias','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
  IF(ELISANC( 'ALL.D.Products', 'Cement Group', !ALL.D.Products ) <> 0
     % ELISANC( 'ALL.D.Products', 'Group Others', !ALL.D.Products ) <> 0
   ,0  
@@ -1451,7 +1451,7 @@ DB('DFS.200.KPIs', !ALL.D.Year, '02', !ALL.D.Version, !ALL.D.Currency, !ALL.D.Re
 # Date 02/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------  
-['DFS.D.KPI':'DFS.D.KPI':'Receita adjacências ex RMX','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
+['DFS.D.KPI':'DFS.D.KPI':'Receita adjacÃªncias ex RMX','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
  IF(ELISANC( 'ALL.D.Products', 'Cement Group', !ALL.D.Products )  <> 0
   % ELISANC( 'ALL.D.Products', 'Ready Mix Group', !ALL.D.Products ) <> 0
     % ELISANC( 'ALL.D.Products', 'Group Others', !ALL.D.Products ) <> 0  
@@ -1472,7 +1472,7 @@ DB('DFS.200.KPIs', !ALL.D.Year, '02', !ALL.D.Version, !ALL.D.Currency, !ALL.D.Re
 # Date 02/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------  
-['DFS.D.KPI':'DFS.D.KPI':'EBITDA Adjacências','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
+['DFS.D.KPI':'DFS.D.KPI':'EBITDA AdjacÃªncias','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
  IF(ELISANC( 'ALL.D.Products', 'Cement Group', !ALL.D.Products ) <> 0
     % ELISANC( 'ALL.D.Products', 'Group Others', !ALL.D.Products ) <> 0    
   ,0  
@@ -1493,7 +1493,7 @@ DB('DFS.200.KPIs', !ALL.D.Year, '02', !ALL.D.Version, !ALL.D.Currency, !ALL.D.Re
 # Date 02/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------  
-['DFS.D.KPI':'DFS.D.KPI':'EBITDA Adjacências ex RMX','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
+['DFS.D.KPI':'DFS.D.KPI':'EBITDA AdjacÃªncias ex RMX','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] = N:
  IF(ELISANC( 'ALL.D.Products', 'Cement Group', !ALL.D.Products )  <> 0
   % ELISANC( 'ALL.D.Products', 'Ready Mix Group', !ALL.D.Products ) <> 0
      % ELISANC( 'ALL.D.Products', 'Group Others', !ALL.D.Products ) <> 0   
@@ -1606,7 +1606,7 @@ DB('DFS.200.KPIs', !ALL.D.Year, '02', !ALL.D.Version, !ALL.D.Currency, !ALL.D.Re
 # Date 02/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------  
-['DFS.D.KPI':'DFS.D.KPI':'Margem de Contribuição por produto','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] =
+['DFS.D.KPI':'DFS.D.KPI':'Margem de ContribuiÃ§Ã£o por produto','DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] =
    DB('DFS.100.Profit_and_Loss', 
                   !ALL.D.Year, 
                   !ALL.D.Month, 
@@ -1779,11 +1779,11 @@ DB('DFS.200.KPIs', !ALL.D.Year, '02', !ALL.D.Version, !ALL.D.Currency, !ALL.D.Re
 ','Power (LMU/t)','Raw Material (LMU/t)','Other Variable (LMU/t)','Labor (LMU/t)','Maintenance (LMU/t)','Other Fixed Costs (LMU/t)','Cash Cost (LMU/t)','Cement Var. Costs (LMU/t)','Cement Fix. Costs (LMU/t)'},'ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' },'DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] => ['DFS.M.200.KPIs':'DFS.M.200.KPIs':'Aux'];
 
 
-['DFS.D.KPI':'DFS.D.KPI':'Revenue','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' },'DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] => ['DFS.D.KPI':'DFS.D.KPI':'Receita adjacências'];
-['DFS.D.KPI':'DFS.D.KPI':'Revenue','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' },'DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] => ['DFS.D.KPI':'DFS.D.KPI':'Receita adjacências ex RMX'];
+['DFS.D.KPI':'DFS.D.KPI':'Revenue','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' },'DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] => ['DFS.D.KPI':'DFS.D.KPI':'Receita adjacÃªncias'];
+['DFS.D.KPI':'DFS.D.KPI':'Revenue','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' },'DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] => ['DFS.D.KPI':'DFS.D.KPI':'Receita adjacÃªncias ex RMX'];
 
-['DFS.D.KPI':'DFS.D.KPI':'EBITDA LTM','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' },'DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] => ['DFS.D.KPI':'DFS.D.KPI':'EBITDA Adjacências'];
-['DFS.D.KPI':'DFS.D.KPI':'EBITDA LTM','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' },'DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] => ['DFS.D.KPI':'DFS.D.KPI':'EBITDA Adjacências ex RMX'];
+['DFS.D.KPI':'DFS.D.KPI':'EBITDA LTM','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' },'DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] => ['DFS.D.KPI':'DFS.D.KPI':'EBITDA AdjacÃªncias'];
+['DFS.D.KPI':'DFS.D.KPI':'EBITDA LTM','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' },'DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] => ['DFS.D.KPI':'DFS.D.KPI':'EBITDA AdjacÃªncias ex RMX'];
 
 ['DFS.D.KPI':'DFS.D.KPI':'Revenue','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' },'DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] => ['DFS.D.KPI':'DFS.D.KPI':'% FC + SG&A/Net Revenue'];
 ['DFS.D.KPI':'DFS.D.KPI':'Revenue','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' },'DFS.M.200.KPIs':'DFS.M.200.KPIs':'Value'] => ['DFS.D.KPI':'DFS.D.KPI':'% FC/NetRevenue'];

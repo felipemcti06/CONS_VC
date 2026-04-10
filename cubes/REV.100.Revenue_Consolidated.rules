@@ -22,8 +22,8 @@
    ,CONTINUE) ;
 
 # --------------------------------------------------------------------------------------------
-# Name Define versões calculadas
-# Desc A partir dessa regra só calcula para versões dinâmicas
+# Name Define versÃµes calculadas
+# Desc A partir dessa regra sÃ³ calcula para versÃµes dinÃ¢micas
 # Date 01/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------
@@ -41,12 +41,12 @@
 
 # --------------------------------------------------------------------------------------------
 #
-#                      			INICIO DO BLOCO CALCULOS CONVERSÃO MOEDA
+#                      			INICIO DO BLOCO CALCULOS CONVERSÃƒO MOEDA
 #
 # --------------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------------
-# Name: Conversão de Moedas para mertica ajuste
-# Desc: Conversão de moedas para os padrões USD, BRL e EUR
+# Name: ConversÃ£o de Moedas para mertica ajuste
+# Desc: ConversÃ£o de moedas para os padrÃµes USD, BRL e EUR
 # Date 01/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------
@@ -197,7 +197,7 @@
 # Date 01/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------
-['REV.M.100.Revenue_Consolidated':'REV.M.100.Revenue_Consolidated':{'Price Premium [$/ton]' , 'Reference Price [$/ton]' , 'Sales Volume [kt]'} , 'ALL.D.Products':'ALL.D.Products':'Total Products']=C:
+['REV.M.100.Revenue_Consolidated':'REV.M.100.Revenue_Consolidated':{'Price Premium [$/ton]' , 'REV.010.001' , 'Sales Volume [kt]'} , 'ALL.D.Products':'ALL.D.Products':'Total Products']=C:
   0;
 
 # --------------------------------------------------------------------------------------------
@@ -206,7 +206,7 @@
 # Date 01/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------
-  ['REV.M.100.Revenue_Consolidated':'REV.M.100.Revenue_Consolidated':'% Operational Tax' ] = N:
+  ['REV.M.100.Revenue_Consolidated':'REV.M.100.Revenue_Consolidated':'REV.030.001' ] = N:
   DB( 'STG.100.DataBase_Uploads',
       !ALL.D.Year,
       !ALL.D.Month,
@@ -214,7 +214,7 @@
      !ALL.D.Currency,
      !ALL.D.Region,
      !ALL.D.Products,
-     '% Operational Tax',
+     'REV.030.001',
      'ALL.D.Account_Line':'Total Accounts Line',
      'STG.M.100.DataBaseUploads':'Value' 
      );
@@ -237,7 +237,7 @@ C:
 # Date 01/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------
-  ['REV.M.100.Revenue_Consolidated':'REV.M.100.Revenue_Consolidated':'Reference Price [$/ton]' , 'ALL.D.Market':'ALL.D.Market':'Domestic'] = N:
+  ['REV.M.100.Revenue_Consolidated':'REV.M.100.Revenue_Consolidated':'REV.010.001' , 'ALL.D.Market':'ALL.D.Market':'Domestic'] = N:
   DB( 'STG.100.DataBase_Uploads',
       !ALL.D.Year,
       !ALL.D.Month,
@@ -245,7 +245,7 @@ C:
      !ALL.D.Currency,
      !ALL.D.Region,
      !ALL.D.Products,
-     'Reference Price [$/ton]',
+     'REV.010.001',
      'ALL.D.Account_Line':'Total Accounts Line',
      'STG.M.100.DataBaseUploads':'Value' 
      );
@@ -279,7 +279,7 @@ C:
      !ALL.D.Currency,
      !ALL.D.Region,
      !ALL.D.Products,
-     'Export Market Sales Volume [kt]',
+     'REV.020.002',
      'ALL.D.Account_Line':'Total Accounts Line',
      'STG.M.100.DataBaseUploads':'Value' 
      );
@@ -290,7 +290,7 @@ C:
 # Date 01/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------
-  ['REV.M.100.Revenue_Consolidated':'REV.M.100.Revenue_Consolidated':'Third Part Sales Volume [kt]' , 'ALL.D.Market':'ALL.D.Market':'Domestic'] = N:
+  ['REV.M.100.Revenue_Consolidated':'REV.M.100.Revenue_Consolidated':'REV.020.003' , 'ALL.D.Market':'ALL.D.Market':'Domestic'] = N:
   DB( 'STG.100.DataBase_Uploads',
       !ALL.D.Year,
       !ALL.D.Month,
@@ -298,7 +298,7 @@ C:
      !ALL.D.Currency,
      !ALL.D.Region,
      !ALL.D.Products,
-     'Third Part Sales Volume [kt]',
+     'REV.020.003',
      'ALL.D.Account_Line':'Total Accounts Line',
      'STG.M.100.DataBaseUploads':'Value' 
      );
@@ -329,7 +329,7 @@ C:
      !ALL.D.Currency,
      !ALL.D.Region,
      !ALL.D.Products,
-     'Local Market Price Premium [$/ton]',
+     'REV.010.002',
      'ALL.D.Account_Line':'Total Accounts Line',
      'STG.M.100.DataBaseUploads':'Value' 
      );
@@ -342,7 +342,7 @@ C:
      !ALL.D.Currency,
      !ALL.D.Region,
      !ALL.D.Products,
-     'Export Market Price Premium [$/ton]',
+     'REV.010.003',
      'ALL.D.Account_Line':'Total Accounts Line',
      'STG.M.100.DataBaseUploads':'Value' 
      );
@@ -356,7 +356,7 @@ C:
   ['REV.M.100.Revenue_Consolidated':'REV.M.100.Revenue_Consolidated':'Net Revenue [$MM]' ] = N:
 (['REV.M.100.Revenue_Consolidated':'REV.M.100.Revenue_Consolidated':'Sales Volume [kt]'] 
     *
-(  ['REV.M.100.Revenue_Consolidated': 'REV.M.100.Revenue_Consolidated':'Reference Price [$/ton]']
+(  ['REV.M.100.Revenue_Consolidated': 'REV.M.100.Revenue_Consolidated':'REV.010.001']
     +
   ['REV.M.100.Revenue_Consolidated':'REV.M.100.Revenue_Consolidated':'Price Premium [$/ton]'])
    \1000 );
@@ -370,8 +370,8 @@ C:
 # --------------------------------------------------------------------------------------------
   ['REV.M.100.Revenue_Consolidated':'REV.M.100.Revenue_Consolidated':'Gross Revenue [$MM]' ] = N:
  ['REV.M.100.Revenue_Consolidated':'REV.M.100.Revenue_Consolidated':'Net Revenue [$MM]' ]
-    *(1+[ 'REV.M.100.Revenue_Consolidated':'REV.M.100.Revenue_Consolidated':'% Operational Tax']
-  # DB( 'ALL.015.Region_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, !ALL.D.Region, '% Operational Tax', 'Value' )
+    *(1+[ 'REV.M.100.Revenue_Consolidated':'REV.M.100.Revenue_Consolidated':'REV.030.001']
+  # DB( 'ALL.015.Region_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, !ALL.D.Region, 'REV.030.001', 'Value' )
                                                                                             
                                                                                             );
 
@@ -403,7 +403,7 @@ C:
 ['REV.M.100.Revenue_Consolidated':'REV.M.100.Revenue_Consolidated':'Sales Volume [kt]','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
 ]=> ['REV.M.100.Revenue_Consolidated':'REV.M.100.Revenue_Consolidated':'Net Revenue [$MM]' ] ; 
 
-['REV.M.100.Revenue_Consolidated':'REV.M.100.Revenue_Consolidated':'Reference Price [$/ton]','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
+['REV.M.100.Revenue_Consolidated':'REV.M.100.Revenue_Consolidated':'REV.010.001','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
 ]=> ['REV.M.100.Revenue_Consolidated':'REV.M.100.Revenue_Consolidated':'Net Revenue [$MM]' ] ; 
 
 ['REV.M.100.Revenue_Consolidated':'REV.M.100.Revenue_Consolidated':'Price Premium [$/ton]','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }

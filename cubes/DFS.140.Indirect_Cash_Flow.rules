@@ -73,8 +73,8 @@
     , CONTINUE );
 
 # --------------------------------------------------------------------------------------------
-# Name Define versões calculadas
-# Desc A partir dessa regra só calcula para versões dinâmicas
+# Name Define versÃµes calculadas
+# Desc A partir dessa regra sÃ³ calcula para versÃµes dinÃ¢micas
 # Date 01/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------
@@ -93,12 +93,12 @@
 
 # --------------------------------------------------------------------------------------------
 #
-#                      			INICIO DO BLOCO CALCULOS CONVERSÃO MOEDA
+#                      			INICIO DO BLOCO CALCULOS CONVERSÃƒO MOEDA
 #
 # --------------------------------------------------------------------------------------------
 # --------------------------------------------------------------------------------------------
-# Name: Conversão de Moedas para mertica ajuste
-# Desc: Conversão de moedas para os padrões USD, BRL e EUR
+# Name: ConversÃ£o de Moedas para mertica ajuste
+# Desc: ConversÃ£o de moedas para os padrÃµes USD, BRL e EUR
 # Date 01/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------
@@ -245,7 +245,7 @@
 
 # --------------------------------------------------------------------------------------------
 #
-#                      			INICIO DO BLOCO CALCULOS CONVERSÃO MOEDA  SALDO FINAL
+#                      			INICIO DO BLOCO CALCULOS CONVERSÃƒO MOEDA  SALDO FINAL
 #
 # --------------------------------------------------------------------------------------------
 ###############################################################
@@ -642,7 +642,7 @@ DB( 'DFS.120.Financial_Results',
     !ALL.D.Version,
     !ALL.D.Currency,
     !ALL.D.Region,
-    'DFS.D.Accounts_Fin_Results':'Liquidation', 
+    'DFS.D.Accounts_Fin_Results':'FIN.050.002', 
     !DFS.M.140.Indirect_Cash_Flow
   );
 
@@ -686,7 +686,7 @@ DB( 'DFS.120.Financial_Results',
 # # Date 01/2026
 # # Author: Miranda / Helder
 # # --------------------------------------------------------------------------------------------
-  ['DFS.D.Accounts_ICF':'DFS.D.Accounts_ICF':'Other','DFS.M.140.Indirect_Cash_Flow':'DFS.M.140.Indirect_Cash_Flow':'Value'] = N:
+  ['DFS.D.Accounts_ICF':'DFS.D.Accounts_ICF':'OOR.010.001','DFS.M.140.Indirect_Cash_Flow':'DFS.M.140.Indirect_Cash_Flow':'Value'] = N:
    DB( 'STG.100.DataBase_Uploads',
        !ALL.D.Year,
        !ALL.D.Month,
@@ -880,7 +880,7 @@ DB( 'DFS.120.Financial_Results',
 #      !ALL.D.Currency,
 #      !ALL.D.Region,
 #      'ALL.D.Products':'Total Products',
-#      'Foreign Exchange Cash Flow Impact',
+#      'FIN.020.001',
 #       'ALL.D.Account_Line':'Total Accounts Line', 
 #      'Value'
 # )
@@ -986,7 +986,7 @@ DB( 'DFS.120.Financial_Results',
     +
 ['DFS.D.Accounts_ICF':'DFS.D.Accounts_ICF':'Financial Results']
     +
-['DFS.D.Accounts_ICF':'DFS.D.Accounts_ICF':'Other' ]
+['DFS.D.Accounts_ICF':'DFS.D.Accounts_ICF':'OOR.010.001' ]
              
     ;
 # # --------------------------------------------------------------------------------------------
@@ -1327,24 +1327,24 @@ C:
 
 #     , CONTINUE );
  # # --------------------------------------------------------------------------------------------
-# # Name: FCL Econômico
-# # Desc: FCL Econômico
+# # Name: FCL EconÃ´mico
+# # Desc: FCL EconÃ´mico
 # # Date 01/2026
 # # Author: Miranda / Helder
 # # --------------------------------------------------------------------------------------------
- ['DFS.D.Accounts_ICF':'DFS.D.Accounts_ICF':'FCL Econômico' ]=N:
+ ['DFS.D.Accounts_ICF':'DFS.D.Accounts_ICF':'FCL EconÃ´mico' ]=N:
    [ 'DFS.D.Accounts_ICF':'DFS.D.Accounts_ICF':'Cash generation before financing']
    *
   DB( 'ALL.015.Region_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, !ALL.D.Region, '% Participation', 'Value' )
 ;
 
  # # --------------------------------------------------------------------------------------------
-# # Name: FCL Econômico
-# # Desc: FCL Econômico
+# # Name: FCL EconÃ´mico
+# # Desc: FCL EconÃ´mico
 # # Date 01/2026
 # # Author: Miranda / Helder
 # # --------------------------------------------------------------------------------------------
- ['DFS.D.Accounts_ICF':'DFS.D.Accounts_ICF':'DL Econômica' ]=N:
+ ['DFS.D.Accounts_ICF':'DFS.D.Accounts_ICF':'DL EconÃ´mica' ]=N:
    [ 'DFS.D.Accounts_ICF':'DFS.D.Accounts_ICF':'Final Net Debt']
    *
   DB( 'ALL.015.Region_Assumptions', !ALL.D.Year, !ALL.D.Month, !ALL.D.Version, !ALL.D.Region, '% Participation', 'Value' )
@@ -1400,8 +1400,8 @@ C:
 ['DFS.D.Accounts_ICF':'DFS.D.Accounts_ICF':'EBITDA'] => ['DFS.D.Accounts_ICF':'DFS.D.Accounts_ICF':'Leverage'];
 ['DFS.D.Accounts_ICF':'DFS.D.Accounts_ICF':'Dividends received'] => ['DFS.D.Accounts_ICF':'DFS.D.Accounts_ICF':'Leverage'];    
 # --------------------------------------------------------------------------------------------
-# Name: Conversão de Moedas
-# Desc: Conversão de moedas para os padrões USD, BRL e EUR
+# Name: ConversÃ£o de Moedas
+# Desc: ConversÃ£o de moedas para os padrÃµes USD, BRL e EUR
 # Date 01/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------
@@ -1465,7 +1465,7 @@ C:
 ['DFS.D.Accounts_ICF':'DFS.D.Accounts_ICF':'Financial Results','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
 ]=>['DFS.D.Accounts_ICF':'DFS.D.Accounts_ICF':'SCF before dividends'];        
         
-['DFS.D.Accounts_ICF':'DFS.D.Accounts_ICF':'Other','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
+['DFS.D.Accounts_ICF':'DFS.D.Accounts_ICF':'OOR.010.001','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
 ]=>['DFS.D.Accounts_ICF':'DFS.D.Accounts_ICF':'SCF before dividends'];        
 
 
@@ -1583,24 +1583,24 @@ C:
 
 
 # --------------------------------------------------------------------------------------------
-# Name:FCL Econômico
-# Desc: FCL Econômico
+# Name:FCL EconÃ´mico
+# Desc: FCL EconÃ´mico
 # Date 01/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------    
 
 ['DFS.D.Accounts_ICF':'DFS.D.Accounts_ICF':'Cash generation before financing','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
-]=>['DFS.D.Accounts_ICF':'DFS.D.Accounts_ICF':'FCL Econômico'];    
+]=>['DFS.D.Accounts_ICF':'DFS.D.Accounts_ICF':'FCL EconÃ´mico'];    
 
 # --------------------------------------------------------------------------------------------
-# Name:DL Econômica
-# Desc:DL Econômica
+# Name:DL EconÃ´mica
+# Desc:DL EconÃ´mica
 # Date 01/2026
 # Author: Miranda / Helder
 # --------------------------------------------------------------------------------------------    
 
 ['DFS.D.Accounts_ICF':'DFS.D.Accounts_ICF':'Final Net Debt','ALL.D.Version':'ALL.D.Version':{ 'Dynamic Versions' , 'RE' }
-]=>['DFS.D.Accounts_ICF':'DFS.D.Accounts_ICF':'DL Econômica'];    
+]=>['DFS.D.Accounts_ICF':'DFS.D.Accounts_ICF':'DL EconÃ´mica'];    
     
 
 # --------------------------------------------------------------------------------------------
