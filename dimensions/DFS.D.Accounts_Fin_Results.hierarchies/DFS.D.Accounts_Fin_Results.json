@@ -11,15 +11,15 @@
 			"Type": "Numeric"
 		},
 		{
-			"Name": "Financial Expenses",
+			"Name": "FIN.099.004",
 			"Type": "Consolidated"
 		},
 		{
-			"Name": "Financial Expenses - Cash",
+			"Name": "FIN.099.005",
 			"Type": "Consolidated"
 		},
 		{
-			"Name": "Total Financial Revenues",
+			"Name": "FIN.099.006",
 			"Type": "Consolidated"
 		},
 		{
@@ -31,7 +31,7 @@
 			"Type": "Numeric"
 		},
 		{
-			"Name": "Total Interest Expenses",
+			"Name": "FIN.099.002",
 			"Type": "Consolidated"
 		},
 		{
@@ -39,11 +39,11 @@
 			"Type": "Numeric"
 		},
 		{
-			"Name": "Total Foreign Exchange Variation",
+			"Name": "FIN.099.003",
 			"Type": "Consolidated"
 		},
 		{
-			"Name": "Foreign Exchange Variation Over Cash",
+			"Name": "FIN.020.001",
 			"Type": "Numeric"
 		},
 		{
@@ -51,11 +51,11 @@
 			"Type": "Numeric"
 		},
 		{
-			"Name": "Foreign Exchange Variation (LC)",
+			"Name": "FCF.030.002",
 			"Type": "Numeric"
 		},
 		{
-			"Name": "Hedge Accounting International investments",
+			"Name": "DEB.010.007",
 			"Type": "Numeric"
 		},
 		{
@@ -83,11 +83,11 @@
 			"Type": "Numeric"
 		},
 		{
-			"Name": "Financial Revenues",
+			"Name": "FCF.099.002",
 			"Type": "Numeric"
 		},
 		{
-			"Name": "Financial Revenues Adjustment",
+			"Name": "FIN.040.002",
 			"Type": "Numeric"
 		},
 		{
@@ -107,15 +107,15 @@
 			"Type": "Numeric"
 		},
 		{
-			"Name": "Total Hedge Results",
+			"Name": "FIN.099.007",
 			"Type": "Consolidated"
 		},
 		{
-			"Name": "Other Financial Revenues - (Non Cash)",
+			"Name": "FIN.060.001",
 			"Type": "Numeric"
 		},
 		{
-			"Name": "Total Other Financial Revenues",
+			"Name": "FIN.099.008",
 			"Type": "Consolidated"
 		},
 		{
@@ -126,147 +126,147 @@
 	"Edges": [
 		{
 			"ParentName": "FINANCIAL RESULTS",
-			"ComponentName": "Total Interest Expenses",
+			"ComponentName": "FIN.099.002",
 			"Weight": 1
 		},
 		{
 			"ParentName": "FINANCIAL RESULTS",
-			"ComponentName": "Total Foreign Exchange Variation",
+			"ComponentName": "FIN.099.003",
 			"Weight": 1
 		},
 		{
 			"ParentName": "FINANCIAL RESULTS",
-			"ComponentName": "Financial Expenses",
+			"ComponentName": "FIN.099.004",
 			"Weight": 1
 		},
 		{
 			"ParentName": "FINANCIAL RESULTS",
-			"ComponentName": "Total Financial Revenues",
+			"ComponentName": "FIN.099.006",
 			"Weight": 1
 		},
 		{
 			"ParentName": "FINANCIAL RESULTS",
-			"ComponentName": "Total Hedge Results",
+			"ComponentName": "FIN.099.007",
 			"Weight": 1
 		},
 		{
 			"ParentName": "FINANCIAL RESULTS",
-			"ComponentName": "Total Other Financial Revenues",
+			"ComponentName": "FIN.099.008",
 			"Weight": 1
 		},
 		{
-			"ParentName": "Financial Expenses",
-			"ComponentName": "Financial Expenses - Cash",
+			"ParentName": "FIN.099.004",
+			"ComponentName": "FIN.099.005",
 			"Weight": 1
 		},
 		{
-			"ParentName": "Financial Expenses",
+			"ParentName": "FIN.099.004",
 			"ComponentName": "FIN.030.006",
 			"Weight": 1
 		},
 		{
-			"ParentName": "Financial Expenses - Cash",
+			"ParentName": "FIN.099.005",
 			"ComponentName": "FIN.030.001",
 			"Weight": 1
 		},
 		{
-			"ParentName": "Financial Expenses - Cash",
+			"ParentName": "FIN.099.005",
 			"ComponentName": "FIN.030.002",
 			"Weight": 1
 		},
 		{
-			"ParentName": "Financial Expenses - Cash",
+			"ParentName": "FIN.099.005",
 			"ComponentName": "FIN.030.003",
 			"Weight": 1
 		},
 		{
-			"ParentName": "Financial Expenses - Cash",
+			"ParentName": "FIN.099.005",
 			"ComponentName": "FIN.030.004",
 			"Weight": 1
 		},
 		{
-			"ParentName": "Financial Expenses - Cash",
+			"ParentName": "FIN.099.005",
 			"ComponentName": "FIN.030.005",
 			"Weight": 1
 		},
 		{
-			"ParentName": "Total Financial Revenues",
-			"ComponentName": "Financial Revenues",
+			"ParentName": "FIN.099.006",
+			"ComponentName": "FCF.099.002",
 			"Weight": 1
 		},
 		{
-			"ParentName": "Total Financial Revenues",
+			"ParentName": "FIN.099.006",
 			"ComponentName": "FIN.040.001",
 			"Weight": 1
 		},
 		{
-			"ParentName": "Total Financial Revenues",
-			"ComponentName": "Financial Revenues Adjustment",
+			"ParentName": "FIN.099.006",
+			"ComponentName": "FIN.040.002",
 			"Weight": 1
 		},
 		{
-			"ParentName": "Total Financial Revenues",
+			"ParentName": "FIN.099.006",
 			"ComponentName": "FIN.040.004",
 			"Weight": 1
 		},
 		{
-			"ParentName": "Total Interest Expenses",
+			"ParentName": "FIN.099.002",
 			"ComponentName": "FIN.010.001",
 			"Weight": 1
 		},
 		{
-			"ParentName": "Total Interest Expenses",
+			"ParentName": "FIN.099.002",
 			"ComponentName": "FIN.010.002",
 			"Weight": 1
 		},
 		{
-			"ParentName": "Total Foreign Exchange Variation",
-			"ComponentName": "Foreign Exchange Variation Over Cash",
+			"ParentName": "FIN.099.003",
+			"ComponentName": "FIN.020.001",
 			"Weight": 1
 		},
 		{
-			"ParentName": "Total Foreign Exchange Variation",
+			"ParentName": "FIN.099.003",
 			"ComponentName": "FIN.020.002",
 			"Weight": 1
 		},
 		{
-			"ParentName": "Total Foreign Exchange Variation",
-			"ComponentName": "Foreign Exchange Variation (LC)",
+			"ParentName": "FIN.099.003",
+			"ComponentName": "FCF.030.002",
 			"Weight": 1
 		},
 		{
-			"ParentName": "Total Foreign Exchange Variation",
-			"ComponentName": "Hedge Accounting International investments",
+			"ParentName": "FIN.099.003",
+			"ComponentName": "DEB.010.007",
 			"Weight": 1
 		},
 		{
-			"ParentName": "Total Foreign Exchange Variation",
+			"ParentName": "FIN.099.003",
 			"ComponentName": "FIN.020.004",
 			"Weight": 1
 		},
 		{
-			"ParentName": "Total Hedge Results",
+			"ParentName": "FIN.099.007",
 			"ComponentName": "FIN.050.001",
 			"Weight": 1
 		},
 		{
-			"ParentName": "Total Hedge Results",
+			"ParentName": "FIN.099.007",
 			"ComponentName": "FIN.050.002",
 			"Weight": 1
 		},
 		{
-			"ParentName": "Total Hedge Results",
+			"ParentName": "FIN.099.007",
 			"ComponentName": "FIN.050.003",
 			"Weight": 1
 		},
 		{
-			"ParentName": "Total Hedge Results",
+			"ParentName": "FIN.099.007",
 			"ComponentName": "FIN.050.004",
 			"Weight": 1
 		},
 		{
-			"ParentName": "Total Other Financial Revenues",
-			"ComponentName": "Other Financial Revenues - (Non Cash)",
+			"ParentName": "FIN.099.008",
+			"ComponentName": "FIN.060.001",
 			"Weight": 1
 		}
 	],
